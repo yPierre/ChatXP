@@ -24,7 +24,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  padding-top: 100%;
 }
 
 .wallpaper{
@@ -38,6 +37,17 @@
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.bg--wallpaper{
+  background: url('/bg_home4.jpg') no-repeat center center fixed; 
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  margin: 0;
 }
 
 .taskbar{
@@ -289,4 +299,50 @@
   height: 100%;
   background-color: #202123;
   border-radius: 4px;
+}
+
+.home--body {
+  display: flex;
+  flex-direction: column;
+}
+
+.h1--container--home{
+  margin-top: 20%;
+  margin-left: 5%;
+  width: 30%;
+  padding: 20px;
+  background-color: #202123;
+}
+
+.p--container--home{
+  margin-top: 50px;
+  margin-left: 13%;
+  width: 15%;
+  padding: 20px;
+  background-color: #202123;
+}
+
+.h1--home{
+  font-size: 3em;
+}
+
+.home--container--menu{
+  display: flex;
+  padding: 15px;
+  background-color: #202123;
+}
+
+
+
+.home--menu{
+  width: 20%;
+  display: flex;
+  margin-left: auto; 
+  margin-right: 0;
+  justify-content: space-around;
+}
+
+.href--home{
+  text-decoration:none;
+  color: white;
 }
