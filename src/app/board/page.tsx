@@ -35,20 +35,22 @@ export default function Board(){
             <div className="wallpaper--container">
                 <div className="wallpaper"></div>
             </div>
+            <div className="desktop">
+                <WindowMSN 
+                    windowId="msn-messenger"
+                    windowState={windowState["msn-messenger"]}
+                    onMinimizeClick={() => handleWindowMinimize("msn-messenger")}
+                />
+                <WindowConversation 
+                    windowId="bot-conversation"
+                    windowState={windowState["bot-conversation"]}
+                    onMinimizeClick={() => handleWindowMinimize("bot-conversation")}
+                />
+            </div>
             <Taskbar
                 windows={["msn-messenger", "bot-conversation"]}
                 windowState={windowState}
                 onWindowClick={handleWindowClick}
-            />
-            <WindowMSN 
-                windowId="msn-messenger"
-                windowState={windowState["msn-messenger"]}
-                onMinimizeClick={() => handleWindowMinimize("msn-messenger")}
-            />
-            <WindowConversation 
-                windowId="bot-conversation"
-                windowState={windowState["bot-conversation"]}
-                onMinimizeClick={() => handleWindowMinimize("bot-conversation")}
             />
         </main>
     )

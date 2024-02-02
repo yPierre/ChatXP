@@ -1,15 +1,16 @@
 "use client"; // This is a client component
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home(){
     return(
         <main className="home--body">
             <div className="home--container--menu">
                 <div className="home--menu">
-                    <a href="#" className="href--home">Login</a>
-                    <a href="#" className="href--home">Cadastrar</a>
-                    <a href="#" className="href--home">Sobre nós</a>
+                    <Link href="/login" className="href--home">Login</Link>
+                    <Link href="/signup" className="href--home">Cadastrar</Link>
+                    <Link href="#" className="href--home">Sobre nós</Link>
                 </div> 
             </div>
 
@@ -18,8 +19,7 @@ export default function Home(){
             </div>
 
             <div className="p--container--home">
-                <p>Faça mais, preocupe-se menos.</p>
-                <p>Descubra o Windows XP.</p>
+                <p>Faça mais, preocupe-se menos. Descubra o ChatXP.</p>
             </div>
 
 
