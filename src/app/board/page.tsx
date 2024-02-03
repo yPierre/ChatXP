@@ -1,7 +1,7 @@
 "use client"; // This is a client component
 
 import Taskbar from "@/components/taskbar"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import WindowMSN from "@/components/windowMSN"
 import WindowConversation from "@/components/windowConversation"
 
@@ -17,10 +17,22 @@ export default function Board(){
     });
 
     const handleWindowClick = (windowId: keyof WindowState) => {
-        setWindowState((prevState) => ({
-            ...prevState,
-            [windowId]: prevState[windowId] === "minimized" ? "normal" : "minimized",
-        }));
+        setWindowState((prevState) => {
+            // Se a largura da tela for menor ou igual a 768px, minimize as janelas
+            if (window.innerWidth <= 768) {
+                const newState: WindowState = {};
+                Object.keys(prevState).forEach((key) => {
+                    newState[key as keyof WindowState] = key === windowId ? "normal" : "minimized";
+                });
+                return newState;
+            } else {
+                // Se a largura da tela for maior que 768px, minimize apenas a janela clicada
+                return {
+                    ...prevState,
+                    [windowId]: prevState[windowId] === "minimized" ? "normal" : "minimized",
+                };
+            }
+        });
     };
 
     const handleWindowMinimize = (windowId: string) => {
@@ -30,6 +42,27 @@ export default function Board(){
             [windowId]: prevState[windowId] === "minimized" ? "normal" : "minimized",
         }));
     };
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                // Se a largura da tela for menor ou igual a 768px, minimize todas as janelas
+                setWindowState((prevState) => {
+                    const newState: WindowState = {};
+                    Object.keys(prevState).forEach((key) => {
+                        newState[key as keyof WindowState] = "minimized";
+                    });
+                    return newState;
+                });
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return(
         <main className="board--body">
             <div className="wallpaper--container">

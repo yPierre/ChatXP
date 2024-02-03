@@ -10,7 +10,7 @@ export default function StartButton(){
                 alt="Start"
             />
             <div className="startButton--text">
-                Start
+                Iniciar
             </div>
         </button>
     )

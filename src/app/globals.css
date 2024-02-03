@@ -23,13 +23,15 @@
 .desktop{
   display: flex;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 30px);
+  top: 0;
+  position: absolute;
 }
 
 .wallpaper--container {
-  display: flex;
   width: 100%;
   height: 100%;
+  position: absolute;
 }
 
 .wallpaper{
@@ -39,9 +41,6 @@
   background-attachment: fixed;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   z-index: -1;
 }
 
@@ -66,13 +65,14 @@
   font-size: 11px;
   flex-shrink: 0;
   cursor: default;
+  z-index: 5;
 }
 
 .startButton{
   color: white;
   background: radial-gradient(circle, #5eac56 0%, #3c873c 100%) center/cover no-repeat;
   border: none;
-  width: 90px;
+  width: 100px;
   height: 100%;
   box-sizing: border-box;
   font-size: 1.1rem;
@@ -100,7 +100,7 @@
 }
 
 .startButton--text{
-  margin-left: 2px;
+  margin-left: 3px;
 }
 
 .taskbar--taskarea{
@@ -147,18 +147,60 @@
 .window--msn--container{
   margin: 20px;
   width: 300px;
-  height: 100%;
-  background-color: black;
+  height: calc(98% - 30px);
+  background-color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 7px;
   z-index: 1;
+}
+
+.window--msn--content{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between; /* Adiciona espaços acima e abaixo dos cards */
+  height: calc(100% - 27px);
+  background-color: white;
+}
+
+.window--msn--history{
+  overflow-y: auto;
+  background-color: blue;
+}
+
+.msn--button {
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  background-color: #2ea44f; /* Cor de fundo atualizada */
+  margin: 5px;
+  color: #fff;
+  border: 2px solid #2ea44f; /* Bordas um pouco mais escuras */
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+}
+
+.msn--button:hover {
+  background-color: #2c8542; /* Altera a cor de fundo quando o botão é hover */
+}
+
+.msn--button:active {
+  background-color: #2c8542; /* Altera a cor de fundo quando o botão é pressionado */
+}
+
+/* Adiciona sombra ao botão para um efeito de elevação */
+.msn--button {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .window--conversation--container{
   margin: 20px;
   flex-grow: 1;
   width: 300px;
-  height: 100%;
+  height: calc(98% - 30px);
   background-color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 7px;
@@ -172,12 +214,12 @@
 .window--conversation--content{
   display: flex;
   flex-direction: column;
-  
+  box-sizing: border-box;
   align-items: flex-end; /* Centraliza horizontalmente */
   justify-content: space-between; /* Adiciona espaços acima e abaixo dos cards */
-  padding: 0 200px; /* Adiciona espaços nas laterais */
+  padding: 0 20%; /* Adiciona espaços nas laterais */
   width: 100%;
-  height: 95%;
+  height: calc(100% - 27px);
 }
 
 .minimized {
@@ -285,26 +327,48 @@
 }
 
 .textbox--container{
+  display: flex;
   width: 100%;
   height: 50px;
+  margin: 5px;
 }
 
 .textbox--input{
-    width: 90%;
-    height: 100%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    resize: none;
+  width: 90%;
+  height: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
 }
 
-.textbox--button{
-  width: 10%;
-  height: 100%;
-  background-color: #202123;
-  border-radius: 4px;
+
+.textbox--button {
+  height: 50px;
+  width: 100px;
+  padding: 10px;
+  background-color: #2ea44f; /* Cor de fundo atualizada */
+  color: #fff;
+  border: 2px solid #2ea44f; /* Bordas um pouco mais escuras */
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+}
+
+.textbox--button:hover {
+  background-color: #2c8542; /* Altera a cor de fundo quando o botão é hover */
+}
+
+.textbox--button:active {
+  background-color: #2c8542; /* Altera a cor de fundo quando o botão é pressionado */
+}
+
+/* Adiciona sombra ao botão para um efeito de elevação */
+.textbox--button {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .home--body {
@@ -531,5 +595,11 @@ a:hover {
     width: 100%;
     display: flex;
     justify-content: space-around;
+  }
+  .window--msn--container{
+    flex-grow: 1;
+  }
+  .window--conversation--content{
+    padding: 0 5%; /* Adiciona espaços nas laterais */
   }
 }

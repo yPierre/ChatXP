@@ -26,7 +26,7 @@ export default function WindowConversation({ windowId, windowState, onMinimizeCl
 
     return(
         <div className={`window--conversation--container ${localWindowState === "minimized" ? "minimized" : ""}`}>
-            <TitleBar onMinimizeClick={handleMinimizeClick}/>
+            <TitleBar titlebarName="Bot Conversation" onMinimizeClick={handleMinimizeClick}/>
             <div className="window--conversation--content">
                 <div className="window--conversation--history">
                     <Card2
@@ -47,8 +47,7 @@ export default function WindowConversation({ windowId, windowState, onMinimizeCl
                     />
                     <Card2
                         title="You"
-                        lastMessage="User
-                        É uma música de festa e é pop"
+                        lastMessage="É uma música de festa e é pop"
                     />
                     <Card2
                         title="ChatXP"

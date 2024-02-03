@@ -1,13 +1,14 @@
 import Image from 'next/image'
 
 interface TitleBarProps {
+    titlebarName: string;
     onMinimizeClick: () => void;
 }
 
-export default function TitleBar({ onMinimizeClick }: TitleBarProps){
+export default function TitleBar({ titlebarName, onMinimizeClick }: TitleBarProps){
     return(
         <div className="titlebar--container">
-            <div className="titlebar--text">A title bar</div>
+            <div className="titlebar--text">{titlebarName}</div>
             <div className="titlebar--controls">
                 <Image className="titlebar--button custom-image"
                     src="/close-button.svg"
