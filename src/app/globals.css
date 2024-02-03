@@ -162,6 +162,8 @@
   justify-content: space-between; /* Adiciona espaços acima e abaixo dos cards */
   height: calc(100% - 27px);
   background-color: white;
+  border: 2px solid #0831d9;
+  border-top: 0px;
 }
 
 .window--msn--history{
@@ -215,11 +217,13 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  align-items: flex-end; /* Centraliza horizontalmente */
+
   justify-content: space-between; /* Adiciona espaços acima e abaixo dos cards */
   padding: 0 20%; /* Adiciona espaços nas laterais */
   width: 100%;
   height: calc(100% - 27px);
+  border: 2px solid #0831d9;
+  border-top: 0px;
 }
 
 .minimized {
@@ -341,6 +345,7 @@
   border: 2px solid #ccc;
   border-radius: 4px;
   background-color: #f8f8f8;
+  color: black;
   resize: none;
 }
 
@@ -354,6 +359,7 @@
   border: 2px solid #2ea44f; /* Bordas um pouco mais escuras */
   font-size: 16px;
   border-radius: 5px;
+  margin-left: 2px;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
 }
@@ -414,6 +420,7 @@
   margin-left: auto; 
   margin-right: 0;
   justify-content: space-around;
+  z-index: 5;
 }
 
 .href--home{

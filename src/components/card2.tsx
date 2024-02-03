@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
 export default function Card2(props: any){
-    const {title, lastMessage} = props;
+    const {name, message} = props;
 
-    const imagePath = title === 'You' ? '/1.png' : '/2.png';
+    const imagePath = name === 'You' ? '/1.png' : '/2.png';
 
     return(
         <div className="card2--container">
@@ -13,8 +13,8 @@ export default function Card2(props: any){
                 height={36}
                 alt="imgTeste" />
             <div className="card2--content">
-                <h3>{title}</h3>
-                <p>{lastMessage}</p>
+                <h3>{name}</h3>
+                <p>{message}</p>
             </div>
         </div>
     )

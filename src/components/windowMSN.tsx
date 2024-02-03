@@ -6,9 +6,23 @@ interface WindowProps {
     windowId: string;
     windowState: string;
     onMinimizeClick: () => void;
+    userData: UserDataItem[];
+    onMessageClick: (cardID: number) => void;
 }
 
-export default function WindowBot({ windowId, windowState, onMinimizeClick }: WindowProps){
+interface HistoryItem {
+    id: number;
+    name: string;
+    message: string;
+}
+
+interface UserDataItem {
+    id: number;
+    title: string;
+    history: HistoryItem[];
+}
+
+export default function WindowBot({ windowId, windowState, onMinimizeClick, userData, onMessageClick  }: WindowProps){
 
     const [localWindowState, setLocalWindowState] = useState(windowState);
 
@@ -24,52 +38,17 @@ export default function WindowBot({ windowId, windowState, onMinimizeClick }: Wi
 
     return(
         <div className={`window--msn--container ${localWindowState  === "minimized" ? "minimized" : ""}`}>
-            <TitleBar titlebarName="Msn messenger" onMinimizeClick={handleMinimizeClick}/>
+            <TitleBar titlebarName="MSN messenger" onMinimizeClick={handleMinimizeClick}/>
             <div className="window--msn--content">
                 <div className="window--msn--history">
-                    <Card
-                        title="Música Pop dos anos 80"
-                        lastMessage="Claro, vou sugerir mais algumas músicas de festa pop dos anos 80 e 90 cantadas por mulheres que contêm refrãos com 'Oh oh oh' ou têm um apelo festivo:"
-                    />
-                    <Card
-                        title="O que é o z-index"
-                        lastMessage="Poderia me explicar o que é o z-index em CSS"
-                    />
-
-                    <Card
-                        title="Ajudar a resolver o jogo do sapo"
-                        lastMessage="Poderia me ajudar a passar do nível 2 do jogo do sapo?"
-                    />
-                    <Card
-                        title="Como centralizar uma div"
-                        lastMessage="Eu estou com dificuldade em centralizar uma div"
-                    />
-                    <Card
-                        title="O que é o z-index"
-                        lastMessage="Poderia me explicar o que é o z-index em CSS"
-                    />
-
-                    <Card
-                        title="Ajudar a resolver o jogo do sapo"
-                        lastMessage="Poderia me ajudar a passar do nível 2 do jogo do sapo?"
-                    />
-                    <Card
-                        title="Como centralizar uma div"
-                        lastMessage="Eu estou com dificuldade em centralizar uma div"
-                    />
-                    <Card
-                        title="O que é o z-index"
-                        lastMessage="Poderia me explicar o que é o z-index em CSS"
-                    />
-
-                    <Card
-                        title="Ajudar a resolver o jogo do sapo"
-                        lastMessage="Poderia me ajudar a passar do nível 2 do jogo do sapo?"
-                    />
-                    <Card
-                        title="Ajudar a resolver o jogo do sapo"
-                        lastMessage="Poderia me ajudar a passar do nível 2 do jogo do sapo?"
-                    />
+                    {userData.map((item: UserDataItem) => (
+                        <Card
+                            key={item.id}
+                            title={item.title}
+                            lastMessage={item.history[item.history.length - 1].message} // Última mensagem
+                            onClick={() => onMessageClick(item.id)}
+                        />
+                    ))}
                 </div>
                 <div>
                     <button type="submit" className="msn--button">Novo chat</button>

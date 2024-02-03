@@ -4,7 +4,7 @@ export default function Textbox(){
 
     return(
         <form className="textbox--container">
-            <input type="text" className="textbox--input" placeholder="Message ChatXP"/>
+            <input type="text" id="message" name="message" className="textbox--input"/>
             <button type="submit" className="textbox--button">Enviar</button>
         </form>
     )

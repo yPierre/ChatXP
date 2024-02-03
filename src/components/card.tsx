@@ -1,7 +1,12 @@
 import Image from 'next/image'
 
-export default function Card(props: any){
-    const {title, lastMessage} = props;
+interface CardProps {
+    title: string;
+    lastMessage: string;
+    onClick: (message: string) => void; // Função de retorno de chamada para manipular o clique
+}
+
+export default function Card({title, lastMessage, onClick}: CardProps) {
     const maxLengthTitle = 20;
     const maxLengthText = 30;
 
@@ -13,8 +18,12 @@ export default function Card(props: any){
         ? lastMessage.slice(0, maxLengthText) + '...'
         : lastMessage;
 
+    const handleClick = () => {
+        onClick(lastMessage);
+    };
+
     return(
-        <div className="card--container">
+        <div className="card--container" onClick={handleClick}>
             <Image className="card--image" 
                 src="/2.png" 
                 width={36}

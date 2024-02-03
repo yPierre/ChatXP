@@ -4,12 +4,26 @@ import Taskbar from "@/components/taskbar"
 import { useEffect, useState } from 'react';
 import WindowMSN from "@/components/windowMSN"
 import WindowConversation from "@/components/windowConversation"
+const userData = require("../../data.js");
 
 interface WindowState {
     [key: string]: string;
 }
 
+interface UserDataItem {
+    id: number;
+    title: string;
+    history: HistoryItem[];
+}
+
+interface HistoryItem {
+    id: number;
+    name: string;
+    message: string;
+}
+
 export default function Board(){
+    const [conversationHistory, setConversationHistory] = useState<any[]>([]);
     const [windowState, setWindowState] = useState<WindowState>({
         "msn-messenger": "normal",
         "bot-conversation": "normal",
@@ -33,6 +47,15 @@ export default function Board(){
                 };
             }
         });
+    };
+
+    const handleCardClick = (cardId: number) => {
+        // Encontrar o card correspondente com base no ID
+        const clickedCard = userData.find((item: UserDataItem) => item.id === cardId);
+        if (clickedCard) {
+            // Se o card correspondente for encontrado, definir o histórico correspondente
+            setConversationHistory(clickedCard.history);
+        }
     };
 
     const handleWindowMinimize = (windowId: string) => {
@@ -73,11 +96,14 @@ export default function Board(){
                     windowId="msn-messenger"
                     windowState={windowState["msn-messenger"]}
                     onMinimizeClick={() => handleWindowMinimize("msn-messenger")}
+                    userData={userData}
+                    onMessageClick={handleCardClick}
                 />
                 <WindowConversation 
                     windowId="bot-conversation"
                     windowState={windowState["bot-conversation"]}
                     onMinimizeClick={() => handleWindowMinimize("bot-conversation")}
+                    history={conversationHistory}
                 />
             </div>
             <Taskbar

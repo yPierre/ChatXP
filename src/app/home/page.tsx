@@ -8,7 +8,7 @@ export default function Home(){
         <main className="home--body">
             <div className="home--container--menu">
                 <div className="home--menu">
-                    <Link href="/login" className="href--home">Login</Link>
+                    <Link href="/login" className="href--home">Entrar</Link>
                     <Link href="/signup" className="href--home">Cadastrar</Link>
                     <Link href="#" className="href--home">Sobre nós</Link>
                 </div> 
