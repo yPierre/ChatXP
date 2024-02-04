@@ -8,6 +8,7 @@ interface WindowProps {
     onMinimizeClick: () => void;
     userData: UserDataItem[];
     onMessageClick: (cardID: number) => void;
+    onAddUserClick: () => void;
 }
 
 interface HistoryItem {
@@ -22,7 +23,7 @@ interface UserDataItem {
     history: HistoryItem[];
 }
 
-export default function WindowBot({ windowId, windowState, onMinimizeClick, userData, onMessageClick  }: WindowProps){
+export default function WindowBot({ windowId, windowState, onMinimizeClick, userData, onMessageClick, onAddUserClick  }: WindowProps){
 
     const [localWindowState, setLocalWindowState] = useState(windowState);
 
@@ -45,13 +46,13 @@ export default function WindowBot({ windowId, windowState, onMinimizeClick, user
                         <Card
                             key={item.id}
                             title={item.title}
-                            lastMessage={item.history[item.history.length - 1].message} // Última mensagem
+                            lastMessage={item.history.length > 0 ? item.history[item.history.length - 1].message : "No messages"} // Última mensagem
                             onClick={() => onMessageClick(item.id)}
                         />
                     ))}
                 </div>
                 <div>
-                    <button type="submit" className="msn--button">Novo chat</button>
+                    <button type="button" className="msn--button" onClick={onAddUserClick}>Novo chat</button>
                 </div>
             </div>
         </div>

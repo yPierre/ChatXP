@@ -8,6 +8,7 @@ interface WindowProps {
     windowState: string;
     onMinimizeClick: () => void;
     history: HistoryItem[];
+    onAddMessage: (name: string, message: string) => void;
 }
 
 interface HistoryItem {
@@ -17,9 +18,10 @@ interface HistoryItem {
 }
 
 
-export default function WindowConversation({ windowId, windowState, onMinimizeClick, history }: WindowProps){
+export default function WindowConversation({ windowId, windowState, onMinimizeClick, history, onAddMessage }: WindowProps){
 
     const [localWindowState, setLocalWindowState] = useState(windowState);
+    const [newMessage, setNewMessage] = useState("");
 
     useEffect(() => {
         // Atualizar o estado local quando o estado externo muda
@@ -31,7 +33,15 @@ export default function WindowConversation({ windowId, windowState, onMinimizeCl
         onMinimizeClick(); // Chame a função do componente pai ao minimizar
     };
 
-    console.log('History:', history);
+    const handleSendMessage = () => {
+        if (newMessage.trim() !== "") {
+            // Adicionar a nova mensagem ao histórico
+            onAddMessage("You", newMessage);
+            // Limpar o campo de texto após enviar a mensagem
+            setNewMessage("");
+        }
+    };
+
 
     return(
         <div className={`window--conversation--container ${localWindowState === "minimized" ? "minimized" : ""}`}>
@@ -46,7 +56,11 @@ export default function WindowConversation({ windowId, windowState, onMinimizeCl
                         />
                     ))}
                 </div>
-                <Textbox/>
+                <Textbox
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    onSendMessage={handleSendMessage}
+                /> 
             </div>
         </div>
     )
