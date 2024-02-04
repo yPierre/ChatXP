@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Login(){
     return(
         <div className="login--page">
-            <div className="backhomeBtn">
+            <div className="backhome--button">
                 <Link href="/home">Home</Link>
             </div>
             <LoginForm/>

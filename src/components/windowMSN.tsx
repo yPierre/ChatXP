@@ -46,7 +46,7 @@ export default function WindowBot({ windowId, windowState, onMinimizeClick, user
                         <Card
                             key={item.id}
                             title={item.title}
-                            lastMessage={item.history.length > 0 ? item.history[item.history.length - 1].message : "No messages"} // Última mensagem
+                            lastMessage={item.history.length > 0 ? item.history[item.history.length - 1].message : "Sem mensagens"} // Última mensagem
                             onClick={() => onMessageClick(item.id)}
                         />
                     ))}

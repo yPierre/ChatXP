@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function Card2(props: any){
     const {name, message} = props;
 
-    const imagePath = name === 'You' ? '/1.png' : '/2.png';
+    const imagePath = name === 'Você' ? '/1.png' : '/2.png';
 
     return(
         <div className="card2--container">

@@ -36,7 +36,7 @@ export default function WindowConversation({ windowId, windowState, onMinimizeCl
     const handleSendMessage = () => {
         if (newMessage.trim() !== "") {
             // Adicionar a nova mensagem ao histórico
-            onAddMessage("You", newMessage);
+            onAddMessage("Você", newMessage);
             // Limpar o campo de texto após enviar a mensagem
             setNewMessage("");
         }

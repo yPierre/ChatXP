@@ -12,6 +12,13 @@
   
 }
 
+.unselectable-text {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Chrome */
+}
+
 
 
 @media (prefers-color-scheme: dark) {
@@ -237,7 +244,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px 5px 3px 3px;
+  padding: 3px 3px 3px 3px;
   border-top: 1px solid #0831d9;
   border-left: 1px solid #0831d9;
   border-right: 1px solid #001ea0;
@@ -250,6 +257,10 @@
 .titlebar--controls{
   display: flex;
   flex-direction: row-reverse;
+}
+
+.titlebar--text{
+  margin-left: 5px;
 }
 
 .titlebar--button{
@@ -268,11 +279,12 @@
   padding: 8px;
   padding-top: 12px;
   padding-bottom: 12px;
+  cursor: pointer;
   box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
 }
 
 .card--container:hover {
-  background-color: #719bf0;
+  background-color: #dbe7fc;
 }
 
 .card--content {
@@ -494,7 +506,7 @@
   margin-right: 5px;
 }
 
-.backhomeBtn {
+.backhome--button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -508,7 +520,7 @@
 }
 
 
-.backhomeBtn a{
+.backhome--button a{
   color: #fff;
   text-decoration: none;
 }
@@ -594,7 +606,7 @@ a:hover {
   }
 }
 
-@media (max-width: 667px) {
+@media (max-width: 768px) {
   .h1--container--home{
     width: 400px;
   }
@@ -608,5 +620,8 @@ a:hover {
   }
   .window--conversation--content{
     padding: 0 5%; /* Adiciona espaços nas laterais */
+  }
+  .taskbar--window{
+    width: 120px;
   }
 }

@@ -8,7 +8,7 @@ interface CardProps {
 
 export default function Card({title, lastMessage, onClick}: CardProps) {
     const maxLengthTitle = 20;
-    const maxLengthText = 30;
+    const maxLengthText = 29;
 
     const displayTextTitle = title.length > maxLengthTitle
         ? title.slice(0, maxLengthTitle) + '...'

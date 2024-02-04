@@ -23,7 +23,7 @@ export default function Taskbar({windows, windowState, onWindowClick}:TaskbarPro
                     windows.map((windowId) => (
                         <div 
                             key={windowId} 
-                            className={`taskbar--window ${windowId}`} 
+                            className={`taskbar--window unselectable-text ${windowId}`} 
                             id={windowId}
                             onClick={() => onWindowClick(windowId)}
                         >

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function SignUp(){
     return(
         <div>
-            <div className="backhomeBtn">
+            <div className="backhome--button">
                 <Link href="/home">Home</Link>
             </div>
             <SignUpForm/>
