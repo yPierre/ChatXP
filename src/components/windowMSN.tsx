@@ -28,13 +28,12 @@ export default function WindowBot({ windowId, windowState, onMinimizeClick, user
     const [localWindowState, setLocalWindowState] = useState(windowState);
 
     useEffect(() => {
-        // Atualizar o estado local quando o estado externo muda
         setLocalWindowState(windowState);
       }, [windowState]);
 
     const handleMinimizeClick = () => {
         setLocalWindowState("minimized");
-        onMinimizeClick(); // Chame a função do componente pai ao minimizar
+        onMinimizeClick();
     };
 
     return(

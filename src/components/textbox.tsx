@@ -10,7 +10,7 @@ export default function Textbox({ value, onChange, onSendMessage }: TextboxProps
     
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
-            event.preventDefault(); // Evita quebra de linha
+            event.preventDefault();
             onSendMessage(); // Chama a função onSendMessage quando Enter é pressionado
         }
     };

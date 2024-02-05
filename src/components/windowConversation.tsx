@@ -24,20 +24,17 @@ export default function WindowConversation({ windowId, windowState, onMinimizeCl
     const [newMessage, setNewMessage] = useState("");
 
     useEffect(() => {
-        // Atualizar o estado local quando o estado externo muda
         setLocalWindowState(windowState);
     }, [windowState]);
 
     const handleMinimizeClick = () => {
         setLocalWindowState("minimized");
-        onMinimizeClick(); // Chame a função do componente pai ao minimizar
+        onMinimizeClick();
     };
 
     const handleSendMessage = () => {
         if (newMessage.trim() !== "") {
-            // Adicionar a nova mensagem ao histórico
             onAddMessage("Você", newMessage);
-            // Limpar o campo de texto após enviar a mensagem
             setNewMessage("");
         }
     };
@@ -52,7 +49,7 @@ export default function WindowConversation({ windowId, windowState, onMinimizeCl
                         <Card2
                             key={item.id}
                             name={item.name}
-                            message={item.message} // Última mensagem
+                            message={item.message}
                         />
                     ))}
                 </div>
